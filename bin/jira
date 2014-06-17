@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require_relative '../lib/jira'
+require_relative '../lib/jira/cli/cli'
+
+Jira::CLI.start(ARGV)
