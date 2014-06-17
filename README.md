@@ -27,6 +27,8 @@ Configure your Jira authentication (currently only .netrc/basic auth):
 
 Theres a few things you can configure using the format `git jira config -s KEY=VALUE`
 
+*Running this command will create a file at `~/.git-jira/config.yml` that you can modify as well.*
+
 ##### jira_domain
 
 This is your subdomain on the jira site
