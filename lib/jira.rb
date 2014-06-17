@@ -12,7 +12,7 @@ module Jira
     end
 
     def domain
-      ENV['JIRA_DOMAIN']
+      config.jira_domain
     end
 
     def url_for_issue(id)
