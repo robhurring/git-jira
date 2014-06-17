@@ -12,6 +12,11 @@ Install the gem:
 
     rake install
 
+Configure your Jira authentication (currently only .netrc/basic auth):
+
+    echo "machine DOMAIN.atlassian.net login user.name password s3cr1t" >> ~/.netrc
+    chmod 600 ~/.netrc
+
 ## Configuration
 
 `git jira config`
