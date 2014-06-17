@@ -2,6 +2,10 @@
 
 This is a small git command to help with a Jira workflow. It will assist in creating branches based off ticket ID's as well as starting pull-requests. A few other useful things it can do are open the current branch's ticket and copy its URL.
 
+## Caveats
+
+Since we're using HTTParty and basic-auth you must have a username/password for your jira account. **Google authentication will not work.** To reset/create a password for your Jira account visit https://YOURDOMAIN.atlassian.net/login/forgot and reset your password.
+
 ## Installation
 
 Clone this repo locally:
