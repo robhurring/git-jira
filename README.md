@@ -77,6 +77,9 @@ This will open the current branch's ticket in your browser
 
 *Must be on a jira branch*
 
+`git jira pull-request`
+`git jira pull-request --create` *Uses the `hub` command to open the pull-request`
+
 This will lookup a bunch of details about your branch and produce a pull-request template with the following things:
 
 * The formatted title "TICKET#: Summary of ticket"
