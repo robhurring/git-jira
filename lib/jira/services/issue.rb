@@ -1,5 +1,6 @@
 module Jira
   class IssueService < Service
+    # TODO: allow config to have field aliases?
     DEFAULT_FIELDS = [
       "summary",
       "description",
@@ -15,6 +16,7 @@ module Jira
       "customfield_10300"   # sponsor
     ]
 
+    # TODO: Add these to config yaml?
     class << self
       def simple_fields
         'summary,description'
