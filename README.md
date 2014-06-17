@@ -8,6 +8,10 @@ Clone this repo locally:
 
     git clone https://github.com/robhurring/git-jira.git
 
+Install dependencies:
+
+    bundle install
+
 Install the gem:
 
     rake install
