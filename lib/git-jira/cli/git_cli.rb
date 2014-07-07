@@ -33,7 +33,7 @@ module GitJira
       description = description[0..GitJira.config.max_branch_length].chomp('_')
       branch_name = "#{id}_#{description}"
 
-      %x{git checkout -b #{branch_name}}
+      %x{git checkout -b #{branch_name} && git branch --set-upstream-to origin/#{branch_name}}
     end
 
     desc 'pull-request [OPTIONS]', 'Open a standard pull-request for this branch using GitJira details'
