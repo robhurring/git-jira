@@ -1,15 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'jira/version'
+require 'git-jira/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "git-jira"
-  spec.version       = Jira::VERSION
+  spec.version       = GitJira::VERSION
   spec.authors       = ["rob hurring"]
   spec.email         = ["rob.hurring@lendkey.com"]
   spec.summary       = %q{Git command for dealing with Jira}
-  spec.description   = %q{Git commands for jira workflow}
+  spec.description   = %q{Git commands for git-jira workflow}
   spec.homepage      = ""
   spec.license       = "MIT"
 

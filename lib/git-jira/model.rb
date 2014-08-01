@@ -1,7 +1,7 @@
 require 'ostruct'
 require 'forwardable'
 
-module Jira
+module GitJira
   class Model < OpenStruct
     extend Forwardable
 

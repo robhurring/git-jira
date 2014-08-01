@@ -1,8 +1,8 @@
-module Jira
+module GitJira
   class Template
     class << self
       def lookup(name)
-        Array(Jira.config.templates_path).each do |path|
+        Array(GitJira.config.templates_path).each do |path|
           template_path = File.join(path, name.to_s)
 
           if File.exists?(template_path)

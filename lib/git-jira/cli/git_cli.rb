@@ -1,6 +1,6 @@
 require_relative './cli'
 
-module Jira
+module GitJira
   class GitCLI < CLI
     desc 'open', 'Opens the ticket for your current branch'
     def open
@@ -22,7 +22,7 @@ module Jira
     desc 'branch TICKET_ID [DESCRIPTION]', 'Start a branch for the given ticket.'
     long_desc 'If no description is given one will be generated from the ticket summary.'
     def branch(id, description = nil)
-      id = Jira.normalize_id(id)
+      id = GitJira.normalize_id(id)
 
       # build a description if none exists
       if description.nil?
@@ -30,13 +30,13 @@ module Jira
         description = issue.fields['summary'].downcase.gsub(/\W/, '_').squeeze('_')
       end
 
-      description = description[0..Jira.config.max_branch_length].chomp('_')
+      description = description[0..GitJira.config.max_branch_length].chomp('_')
       branch_name = "#{id}_#{description}"
 
       %x{git checkout -b #{branch_name}}
     end
 
-    desc 'pull-request [OPTIONS]', 'Open a standard pull-request for this branch using Jira details'
+    desc 'pull-request [OPTIONS]', 'Open a standard pull-request for this branch using GitJira details'
     long_desc %{
       Builds a pull-request based off this branch. It will try to do the following:\n
         - Generate a title with the ticket number and summary\n
@@ -57,7 +57,7 @@ module Jira
       title = "#{issue.key}: #{issue.summary}"
       body = template.render(
         ticket_link: %{[#{ticket_id}](#{issue.url})},
-        associated_repos: associated.map{ |r| "#{Jira.config.github_user}/#{r}" }.join("\n"),
+        associated_repos: associated.map{ |r| "#{GitJira.config.github_user}/#{r}" }.join("\n"),
         reviewer: reviewer
       )
 
@@ -103,7 +103,7 @@ module Jira
       my_branch = current_branch
       my_dir = Dir.getwd
 
-      Array(Jira.config.repo_search_paths).each do |path|
+      Array(GitJira.config.repo_search_paths).each do |path|
         path = File.expand_path(path)
         Dir["#{path}/*"].each do |dir|
           next if dir == my_dir

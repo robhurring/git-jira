@@ -1,4 +1,4 @@
-module Jira
+module GitJira
   class Issue < Model
     def initialize(*)
       super
@@ -6,7 +6,7 @@ module Jira
     end
 
     def url
-      Jira.url_for_issue(key)
+      GitJira.url_for_issue(key)
     end
 
     def component_names

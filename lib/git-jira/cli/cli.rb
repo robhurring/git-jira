@@ -1,6 +1,6 @@
 require 'thor'
 
-module Jira
+module GitJira
   class CLI < Thor
     include Thor::Actions
 
@@ -8,7 +8,7 @@ module Jira
     option :set, aliases: ['s'], desc: 'Set a config value KEY=VALUE'
     option :get, aliases: ['g'], desc: 'Get a config value'
     def config
-      config = Jira.config
+      config = GitJira.config
 
       if options[:set]
         key, value = options[:set].split('=')
@@ -22,16 +22,16 @@ module Jira
         end
       end
 
-    rescue Jira::Config::UnknownKey => e
+    rescue GitJira::Config::UnknownKey => e
       say e, :red
     end
 
     desc 'open [ID]', 'Open the given ticket in jira.'
     def open(issue_id = nil)
       if issue_id
-        %x{open #{Jira.url_for_issue(issue_id)}}
+        %x{open #{GitJira.url_for_issue(issue_id)}}
       else
-        %x{open #{Jira.url}}
+        %x{open #{GitJira.url}}
       end
     end
 
@@ -63,7 +63,7 @@ module Jira
     desc 'copy ID [OPTIONS]', 'Copy the ticket url'
     option :markdown, aliases: ['m'], type: :boolean, desc: 'Copy as markdown (for PR)'
     def copy(id)
-      url = Jira.url_for_issue(id)
+      url = GitJira.url_for_issue(id)
 
       if options[:markdown]
         url = "[#{ticket_id}](#{url})"
@@ -75,7 +75,7 @@ module Jira
   private
 
     def get_issue(id, fields = :all, fail_if_not_found = true)
-      issue = Jira::IssueService.new.get(id, fields)
+      issue = GitJira::IssueService.new.get(id, fields)
 
       unless issue.ok?
         issue.error_messages.each do |msg|
