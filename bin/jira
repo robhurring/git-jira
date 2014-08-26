@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require_relative '../lib/jira'
-require_relative '../lib/jira/cli/cli'
+require_relative '../lib/git-jira'
+require_relative '../lib/git-jira/cli/cli'
 
-Jira::CLI.start(ARGV)
+GitJira::CLI.start(ARGV)

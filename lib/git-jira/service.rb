@@ -1,11 +1,11 @@
 require 'httparty'
 
-module Jira
+module GitJira
   class Service
     include HTTParty
 
-    base_uri Jira.url
-    basic_auth *Jira.credentials
+    base_uri GitJira.url
+    basic_auth *GitJira.credentials
     format :json
   end
 end

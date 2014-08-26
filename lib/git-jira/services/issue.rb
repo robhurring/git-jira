@@ -1,4 +1,4 @@
-module Jira
+module GitJira
   class IssueService < Service
     # TODO: allow config to have field aliases?
     DEFAULT_FIELDS = [
@@ -39,14 +39,14 @@ module Jira
         _fields = fields
       end
 
-      id = Jira.normalize_id(id)
+      id = GitJira.normalize_id(id)
 
       response = self.class.get "/rest/api/2/issue/#{id}", query: {
         fields: _fields,
         expand: expand
       }
 
-      Jira::Issue.new(response)
+      GitJira::Issue.new(response)
     end
   end
 end

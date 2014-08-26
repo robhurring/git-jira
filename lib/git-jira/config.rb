@@ -1,7 +1,7 @@
 require 'fileutils'
 require 'yaml'
 
-module Jira
+module GitJira
   class Config
     UnknownKey = Class.new(RuntimeError)
 

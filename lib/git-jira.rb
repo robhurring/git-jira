@@ -1,7 +1,7 @@
 require 'uri'
 require 'netrc'
 
-module Jira
+module GitJira
   class << self
     def url
       "https://#{domain}.atlassian.net"
@@ -34,9 +34,9 @@ module Jira
   end
 end
 
-require_relative 'jira/config'
-require_relative 'jira/template'
-require_relative 'jira/model'
-require_relative 'jira/service'
-require_relative 'jira/models/issue'
-require_relative 'jira/services/issue'
+require_relative 'git-jira/config'
+require_relative 'git-jira/template'
+require_relative 'git-jira/model'
+require_relative 'git-jira/service'
+require_relative 'git-jira/models/issue'
+require_relative 'git-jira/services/issue'
