@@ -20,7 +20,7 @@ module GitJira
     end
 
     def normalize_id(id)
-      unless id.to_s.start_with?('FY-')
+      unless id.to_s =~ /[A-Z]+\-\d+/
         id = "FY-#{id}"
       end
 
