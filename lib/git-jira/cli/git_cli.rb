@@ -92,7 +92,7 @@ module GitJira
     end
 
     def extract_ticket_id(string)
-      return $1 if string =~ /(FY-\d+)/
+      return $1 if string =~ /([A-Z]+-\d+)/
       nil
     end
 
