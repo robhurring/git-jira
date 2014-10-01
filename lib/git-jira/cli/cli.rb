@@ -49,10 +49,18 @@ module GitJira
       say issue.creator['displayName']
 
       say "Assigned: ", :blue
-      say issue.assignee['displayName']
+      if issue.assignee
+        say issue.assignee['displayName']
+      else
+        say 'Nobody'
+      end
 
       say "Reviewer: ", :blue
-      say issue.code_reviewer['displayName']
+      if issue.code_reviewer
+        say issue.code_reviewer['displayName']
+      else
+        say 'None'
+      end
 
       say "\nStatus: ", :cyan
       say issue.status['name']
